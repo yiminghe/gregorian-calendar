@@ -764,7 +764,8 @@ gregorianCalendar = function (exports) {
     return fixedDate - mod(fixedDate - dayOfWeek, 7);
   }
   exports = GregorianCalendar;
-  GregorianCalendar.version = '1.0.2';
+  GregorianCalendar.version = '1.0.3';
+  GregorianCalendar.locales = { 'default': defaultLocale };
   return exports;
 }();
 module.exports = gregorianCalendar;
