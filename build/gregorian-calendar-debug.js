@@ -5,10 +5,8 @@ combined modules:
 gregorian-calendar
 gregorian-calendar/utils
 gregorian-calendar/const
-gregorian-calendar/i18n/en-us
-gregorian-calendar/i18n/zh-cn
 */
-var gregorianCalendarConst, gregorianCalendarI18nEnUs, gregorianCalendarI18nZhCn, gregorianCalendarUtils, gregorianCalendar;
+var gregorianCalendarConst, gregorianCalendarUtils, gregorianCalendar;
 gregorianCalendarConst = function (exports) {
   /**
    * @ignore
@@ -35,156 +33,6 @@ gregorianCalendarConst = function (exports) {
     OCTOBER: 9,
     NOVEMBER: 10,
     DECEMBER: 11
-  };
-  return exports;
-}();
-gregorianCalendarI18nEnUs = function (exports) {
-  exports = {
-    timezoneOffset: -8 * 60,
-    firstDayOfWeek: 0,
-    minimalDaysInFirstWeek: 1,
-    eras: [
-      'BC',
-      'AD'
-    ],
-    months: [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December'
-    ],
-    shortMonths: [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec'
-    ],
-    weekdays: [
-      'Sunday',
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday'
-    ],
-    shortWeekdays: [
-      'Sun',
-      'Mon',
-      'Tue',
-      'Wed',
-      'Thu',
-      'Fri',
-      'Sat'
-    ],
-    ampms: [
-      'AM',
-      'PM'
-    ],
-    datePatterns: [
-      'EEEE, MMMM d, yyyy',
-      'MMMM d, yyyy',
-      'MMM d, yyyy',
-      'M/d/yy'
-    ],
-    timePatterns: [
-      'h:mm:ss a \'GMT\'Z',
-      'h:mm:ss a',
-      'h:mm:ss a',
-      'h:mm a'
-    ],
-    dateTimePattern: '{date} {time}'
-  };
-  return exports;
-}();
-gregorianCalendarI18nZhCn = function (exports) {
-  exports = {
-    timezoneOffset: 8 * 60,
-    firstDayOfWeek: 1,
-    minimalDaysInFirstWeek: 1,
-    eras: [
-      '\u516C\u5143\u524D',
-      '\u516C\u5143'
-    ],
-    months: [
-      '\u4E00\u6708',
-      '\u4E8C\u6708',
-      '\u4E09\u6708',
-      '\u56DB\u6708',
-      '\u4E94\u6708',
-      '\u516D\u6708',
-      '\u4E03\u6708',
-      '\u516B\u6708',
-      '\u4E5D\u6708',
-      '\u5341\u6708',
-      '\u5341\u4E00\u6708',
-      '\u5341\u4E8C\u6708'
-    ],
-    shortMonths: [
-      '\u4E00\u6708',
-      '\u4E8C\u6708',
-      '\u4E09\u6708',
-      '\u56DB\u6708',
-      '\u4E94\u6708',
-      '\u516D\u6708',
-      '\u4E03\u6708',
-      '\u516B\u6708',
-      '\u4E5D\u6708',
-      '\u5341\u6708',
-      '\u5341\u4E00\u6708',
-      '\u5341\u4E8C\u6708'
-    ],
-    weekdays: [
-      '\u661F\u671F\u5929',
-      '\u661F\u671F\u4E00',
-      '\u661F\u671F\u4E8C',
-      '\u661F\u671F\u4E09',
-      '\u661F\u671F\u56DB',
-      '\u661F\u671F\u4E94',
-      '\u661F\u671F\u516D'
-    ],
-    shortWeekdays: [
-      '\u5468\u65E5',
-      '\u5468\u4E00',
-      '\u5468\u4E8C',
-      '\u5468\u4E09',
-      '\u5468\u56DB',
-      '\u5468\u4E94',
-      '\u5468\u516D'
-    ],
-    ampms: [
-      '\u4E0A\u5348',
-      '\u4E0B\u5348'
-    ],
-    datePatterns: [
-      'yyyy\'\u5E74\'M\'\u6708\'d\'\u65E5\' EEEE',
-      'yyyy\'\u5E74\'M\'\u6708\'d\'\u65E5\'',
-      'yyyy-M-d',
-      'yy-M-d'
-    ],
-    timePatterns: [
-      'ahh\'\u65F6\'mm\'\u5206\'ss\'\u79D2\' \'GMT\'Z',
-      'ahh\'\u65F6\'mm\'\u5206\'ss\'\u79D2\'',
-      'H:mm:ss',
-      'ah:mm'
-    ],
-    dateTimePattern: '{date} {time}'
   };
   return exports;
 }();
@@ -303,11 +151,10 @@ gregorianCalendarUtils = function (exports) {
 gregorianCalendar = function (exports) {
   var toInt = parseInt;
   var Utils = gregorianCalendarUtils;
-  var enUsLocale = gregorianCalendarI18nEnUs;
-  var zhCnLocale = gregorianCalendarI18nZhCn;
+  var requireFn = require;
   var defaultLocale;
   if (typeof process !== 'undefined') {
-    defaultLocale = enUsLocale;
+    defaultLocale = requireFn('./gregorian-calendar/i18n/en-us');
   } else {
     defaultLocale = i18nGregorianCalendar;
   }
@@ -917,9 +764,7 @@ gregorianCalendar = function (exports) {
     return fixedDate - mod(fixedDate - dayOfWeek, 7);
   }
   exports = GregorianCalendar;
-  GregorianCalendar.version = '1.0.1';
-  GregorianCalendar.enUsLocale = enUsLocale;
-  GregorianCalendar.zhCnLocale = zhCnLocale;
+  GregorianCalendar.version = '1.0.2';
   return exports;
 }();
 module.exports = gregorianCalendar;

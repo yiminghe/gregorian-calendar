@@ -88,7 +88,6 @@ describe('GregorianCalendar', function () {
             expect(gregorianCalendar.getDayOfWeek()).to.be(GregorianCalendar.SATURDAY);
         });
 
-
         describe('WEEK_OF_MONTH', function () {
             it('simply works', function () {
                 expect(gregorianCalendar.getWeekOfMonth()).to.be(2);
