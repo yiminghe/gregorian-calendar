@@ -14,8 +14,8 @@
         "!index.js"
     ],
     "dependencies": {
-        "modulex": "modulex#master",
-        "modulex-feature": "modulex-feature#master",
-        "modulex-ua": "modulex-ua#master"
+        "modulex": "*",
+        "modulex-feature": "modulex-feature#1.x",
+        "modulex-ua": "modulex-ua#1.x"
     }
 }

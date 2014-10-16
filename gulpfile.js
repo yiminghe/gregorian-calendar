@@ -30,6 +30,21 @@ gulp.task('clean', function () {
     }).pipe(clean());
 });
 
+gulp.task('tag', function (done) {
+    var cp = require('child_process');
+    var version = packageInfo.version;
+    cp.exec('git tag ' + version + ' | git push origin ' + version + ':' + version + ' | git push origin master:master', done);
+});
+
+var wrapper = require('gulp-wrapper');
+var date = new Date();
+var header = ['/*',
+        'Copyright ' + date.getFullYear() + ', ' + packageInfo.name + '@' + packageInfo.version,
+        packageInfo.license + ' Licensed',
+        'build time: ' + (date.toGMTString()),
+    '*/', ''].join('\n');
+
+
 gulp.task('build-locale', ['lint'], function () {
     var tag = 'gregorian-calendar';
     gulp.src('./lib/' + tag + '/i18n/*.js')
@@ -44,7 +59,9 @@ gulp.task('build-locale', ['lint'], function () {
         .pipe(rename(function (path) {
             path.basename += '-debug';
         }))
-
+.pipe(wrapper({
+                    header: header
+                }))
         .pipe(gulp.dest(path.resolve(build, tag + '/i18n/')))
         .pipe(replace(/@DEBUG@/g, ''))
         .pipe(uglify())
@@ -76,6 +93,9 @@ gulp.task('build', ['lint', 'build-locale'], function () {
             ]
         }))
         .pipe(replace(/@VERSION@/g, packageInfo.version))
+        .pipe(wrapper({
+                    header: header
+                }))
         .pipe(gulp.dest(path.resolve(build)))
         .pipe(filter(tag + '-debug.js'))
         .pipe(replace(/@DEBUG@/g, ''))
