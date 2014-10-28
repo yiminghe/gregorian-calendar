@@ -13,7 +13,7 @@
         "!meta/**/*",
         "!index.js"
     ],
-    "dependencies": {
+    "devDependencies": {
         "modulex": "*",
         "modulex-feature": "modulex-feature#1.x",
         "modulex-ua": "modulex-ua#1.x"
