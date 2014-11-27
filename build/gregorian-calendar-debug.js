@@ -1,7 +1,7 @@
 /*
-Copyright 2014, gregorian-calendar@1.0.4
+Copyright 2014, gregorian-calendar@1.0.5
 MIT Licensed
-build time: Thu, 16 Oct 2014 06:56:35 GMT
+build time: Thu, 27 Nov 2014 07:30:03 GMT
 */
 modulex.add("gregorian-calendar", ["i18n!gregorian-calendar"], function(require, exports, module) {
 var i18nGregorianCalendar = require("i18n!gregorian-calendar");
@@ -176,7 +176,10 @@ gregorianCalendar = function (exports) {
     this.locale = locale;
     this.fields = [];
     this.time = undefined;
-    this.timezoneOffset = timezoneOffset || locale.timezoneOffset;
+    if (typeof timezoneOffset !== 'number') {
+      timezoneOffset = locale.timezoneOffset;
+    }
+    this.timezoneOffset = timezoneOffset;
     this.firstDayOfWeek = locale.firstDayOfWeek;
     this.minimalDaysInFirstWeek = locale.minimalDaysInFirstWeek;
     this.fieldsComputed = false;
@@ -769,7 +772,7 @@ gregorianCalendar = function (exports) {
     return fixedDate - mod(fixedDate - dayOfWeek, 7);
   }
   exports = GregorianCalendar;
-  GregorianCalendar.version = '1.0.4';
+  GregorianCalendar.version = '1.0.5';
   GregorianCalendar.locales = { 'default': defaultLocale };
   return exports;
 }();

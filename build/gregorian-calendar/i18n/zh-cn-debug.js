@@ -1,7 +1,7 @@
 /*
-Copyright 2014, gregorian-calendar@1.0.4
+Copyright 2014, gregorian-calendar@1.0.5
 MIT Licensed
-build time: Thu, 16 Oct 2014 06:56:35 GMT
+build time: Thu, 27 Nov 2014 07:30:03 GMT
 */
 modulex.add("gregorian-calendar/i18n/zh-cn",[], function(require, exports, module) {/**
  * locale info for KISSY Date
