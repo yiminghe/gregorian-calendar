@@ -15,7 +15,7 @@ gregorian calendar lib on browser and nodejs
 
 ```javascript
 var GregorianCalendar = require('gregorian-calendar');
-var date = new GregorianCalendar();
+var date = new GregorianCalendar(require('gregorian-calendar/lib/locale/zh-cn')); // defaults to en-us
 date.setTime(+new Date());
 console.log(date.getDayOfWeek());
 ```

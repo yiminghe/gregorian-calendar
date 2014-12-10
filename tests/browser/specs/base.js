@@ -3,7 +3,7 @@
  * @author yiminghe@gmail.com
  */
 
-var GregorianCalendar = require('gregorian-calendar');
+var GregorianCalendar = require('../../../');
 var ONE_SECOND = 1000;
 var ONE_MINUTE = 60 * ONE_SECOND;
 var ONE_HOUR = 60 * ONE_MINUTE;
@@ -15,8 +15,9 @@ describe('GregorianCalendar', function () {
         var gregorianCalendar;
 
         beforeEach(function () {
-            gregorianCalendar = new GregorianCalendar(2013,
-                GregorianCalendar.JUNE, 8, 18, 0, 0, 0);
+            gregorianCalendar = new GregorianCalendar(require('../../../lib/locale/zh-cn'));
+          gregorianCalendar.set(2013,
+            GregorianCalendar.JUNE, 8, 18, 0, 0, 0);
         });
 
         it('time works', function () {

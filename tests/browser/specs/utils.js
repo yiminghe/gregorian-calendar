@@ -3,7 +3,7 @@
  * @author yiminghe@gmail.com
  */
 
-var GregorianCalendar = require('gregorian-calendar');
+var GregorianCalendar = require('../../../');
 var ONE_SECOND = 1000;
 var ONE_MINUTE = 60 * ONE_SECOND;
 var ONE_HOUR = 60 * ONE_MINUTE;

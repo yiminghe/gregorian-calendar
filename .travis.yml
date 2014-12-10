@@ -5,12 +5,10 @@ notifications:
 node_js:
 - 0.11
 before_script:
-- node --harmony server &
-- npm install gulp bower mocha-phantomjs -g
-- bower install
-- gulp mx
+- node start
+- npm install mocha-phantomjs -g
 - phantomjs --version
 script:
-- npm run browser-test
-- npm run browser-test-build
-- npm run browser-test-cover
+- npm test
+- npm run-script browser-test
+- npm run-script browser-test-cover

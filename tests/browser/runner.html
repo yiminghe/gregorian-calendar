@@ -16,17 +16,14 @@
 <h1 style="text-align: center">gregorian-calendar tests</h1>
 
 <div id='mocha'></div>
-<script src="/mx_modules/modulex-debug.js"></script>
-<script src="/mx_modules/ua-debug.js"></script>
-<script src="/mx_modules/feature-debug.js"></script>
-<script src="/mx_modules/meta.js"></script>
-<script src="/node_modules/async/lib/async.js"></script>
-<script src="/node_modules/node-jscover/lib/front-end/header.js"></script>
-<script src="/node_modules/node-jscover/lib/front-end/jscoverage-branch.js"></script>
-<script src='/node_modules/expect.js/index.js'></script>
-<script src='/node_modules/mocha/mocha.js'></script>
-<script src='/node_modules/node-jscover/lib/reporters/mocha/console.js'></script>
-<script src='/node_modules/node-jscover-coveralls/lib/reports/mocha.js'></script>
+<script src="/node_modules/modulex/build/modulex-debug.js?nowrap"></script>
+<script src="/node_modules/async/lib/async.js?nowrap"></script>
+<script src="/node_modules/node-jscover/lib/front-end/header.js?nowrap"></script>
+<script src="/node_modules/node-jscover/lib/front-end/jscoverage-branch.js?nowrap"></script>
+<script src='/node_modules/expect.js/index.js?nowrap'></script>
+<script src='/node_modules/mocha/mocha.js?nowrap'></script>
+<script src='/node_modules/node-jscover/lib/reporters/mocha/console.js?nowrap'></script>
+<script src='/node_modules/node-jscover-coveralls/lib/reports/mocha.js?nowrap'></script>
 <script>
     function waits(ms) {
         return function (next) {
@@ -52,25 +49,16 @@
 </script>
 <script>
     (function () {
-        modulex.config({
-            base: '/mx_modules',
-            packages: {
-                specs: {
-                    base: '/tests/browser/specs'
+        if (location.href.indexOf('coverage') !== -1) {
+            require.config('packages', {
+                '/lib': {
+                    filter: 'coverage',
+                    base: '/lib/'
                 }
-            }
-        });
+            });
+        }
 
-        modulex.config({
-            packages: {
-                'gregorian-calendar': {
-                    filter: isCoverage ? 'coverage' : isBuild ? 'debug' : '',
-                    base: isBuild ? '/build/gregorian-calendar' : '/lib/gregorian-calendar'
-                }
-            }
-        });
-
-        modulex.use(['specs/'], function () {
+        modulex.use(['./specs/'], function () {
             var runner;
             if (window.mochaPhantomJS) {
                 runner = mochaPhantomJS.run();

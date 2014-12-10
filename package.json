@@ -1,6 +1,6 @@
 {
   "name": "gregorian-calendar",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "author": "yiminghe <yiminghe@gmail.com>",
   "engines": {
     "node": "~0.11"
@@ -41,31 +41,36 @@
     "gulp-replace": "^0.4.0",
     "gulp-uglify": "^0.3.1",
     "gulp-util": "^3.0.0",
+    "gulp-wrapper": "^0.1.5",
     "jshint": "^2.5.5",
     "jshint-stylish": "^0.4.0",
     "koa": "^0.11.0",
     "koa-body": "^0.2.0",
+    "koa-modularize": "^3.0.3",
     "koa-mount": "^1.3.0",
+    "koa-node-jscover": "^1.1.1",
     "koa-serve-index": "^1.0.1",
     "koa-static": "^1.4.7",
     "mocha": "^1.21.4",
+    "modulex": "^1.7.4",
     "node-jscover": "^0.6.8",
     "node-jscover-coveralls": "^1.0.10",
     "node-jscover-handler": "^1.0.3",
     "precommit-hook": "^1.0.7",
-    "gulp-wrapper": "^0.1.5",
     "through2": "^0.6.2"
   },
   "precommit": [
     "lint"
   ],
+  "config": {
+    "port": 8011
+  },
   "scripts": {
     "start": "node --harmony server",
     "test": "",
     "publish": "gulp tag",
     "lint": "gulp lint",
-    "browser-test": "mocha-phantomjs http://localhost:8025/tests/browser/runner.html",
-    "browser-test-build": "mocha-phantomjs http://localhost:8025/tests/browser/runner.html?build",
-    "browser-test-cover": "mocha-phantomjs -R node_modules/node-jscover/lib/reporters/mocha/console http://localhost:8025/tests/browser/runner.html?coverage"
+    "browser-test": "mocha-phantomjs http://localhost:$npm_package_config_port/tests/browser/runner.html",
+    "browser-test-cover": "mocha-phantomjs -R node_modules/node-jscover/lib/reporters/mocha/console http://localhost:$npm_package_config_port/tests/browser/runner.html?coverage"
   }
 }

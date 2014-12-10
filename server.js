@@ -1,65 +1,45 @@
-#!/usr/bin/env node --harmony
-
-var gutil = require('gulp-util');
-var koa = require('koa');
-var koaBody = require('koa-body');
-var path = require('path');
-var jscoverHandler = require('node-jscover-handler/lib/koa');
-var jscoverCoveralls = require('node-jscover-coveralls/lib/koa');
 var serve = require('koa-static');
+var app = require('koa')();
+var path = require('path');
 var fs = require('fs');
-var app = koa();
-var mount = require('koa-mount');
-var cwd = process.cwd();
+var root = path.resolve(__dirname, './');
 var serveIndex = require('koa-serve-index');
-
-function *modularize(next) {
-    var req = this.request;
-    var res = this.response;
-    if (path.extname(this.path) !== '.js') {
-        yield *next;
-        return;
-    }
-    var filePath = path.resolve(cwd, req.originalUrl.substring(1)).replace(/-coverage\.js/, '.js');
-    var stats = fs.statSync(filePath);
-    if (!stats.isFile()) {
-        yield *next;
-        return;
-    }
-    var code = fs.readFileSync(filePath, 'utf-8');
-    code = 'modulex.add(function(require,exports,module){' + code + '});';
-    if (req.path.indexOf('-coverage.js') !== -1) {
-        req.nodeJsCoverCode = code;
-        yield *next;
-        return;
-    }
-    res.set('content-type', 'application/javascript;charset=utf-8');
-    this.body = code;
-}
+var modularize = require('koa-modularize');
+var mount = require('koa-mount');
+var cwd = __dirname;
+var koaBody = require('koa-body');
+var jscoverHandler = require('koa-node-jscover');
+var jscoverCoveralls = require('node-jscover-coveralls/lib/koa');
 
 // parse application/x-www-form-urlencoded
-app.use(koaBody({formidable: {uploadDir: __dirname}, multipart: true}));
-app.use(function *(next) {
-    if (path.extname(this.path) === '.jss') {
-        var func = require(path.resolve(__dirname, this.path.substring(1))).call(this);
-        yield *func;
-    } else {
-        yield *next;
-    }
-});
-app.use(mount('/lib/', modularize));
-app.use(mount('/tests/browser/specs/', modularize));
-
+app.use(koaBody());
+app.use(jscoverHandler({
+  onlyLoad: function () {
+    return 1;
+  },
+  next: function () {
+    return 1;
+  }
+}));
+app.use(jscoverHandler({
+  jscover: require('node-jscover'),
+  next: function () {
+    return 1;
+  }
+}));
+app.use(mount('/', modularize(root, {
+  nowrap: function () {
+    return this.url.indexOf('nowrap') != -1 || this.url.indexOf('/node_modules/node-jscover/') != -1;
+  }
+})));
 app.use(jscoverCoveralls());
-app.use(jscoverHandler());
-app.use(serveIndex(cwd, {
-    hidden: true,
-    view: 'details'
+app.use(serveIndex(root, {
+  hidden: true,
+  view: 'details'
 }));
-app.use(serve(cwd, {
-    hidden: true
+app.use(serve(root, {
+  hidden: true
 }));
-var port = process.env.PORT || parseInt('8025', 10);
+var port = process.env.npm_package_config_port;
 app.listen(port);
-app.listen(8022);
-gutil.log('server start at ' + port);
+console.log('listen at ' + port);
