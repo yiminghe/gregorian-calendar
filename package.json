@@ -1,6 +1,6 @@
 {
   "name": "gregorian-calendar",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "author": "yiminghe <yiminghe@gmail.com>",
   "engines": {
     "node": "~0.11"
