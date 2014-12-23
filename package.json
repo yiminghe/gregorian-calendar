@@ -55,7 +55,7 @@
   "scripts": {
     "start": "node --harmony server",
     "test": "",
-    "publish": "gulp tag",
+    "publish": "spm publish && gulp tag",
     "lint": "gulp lint",
     "browser-test": "mocha-phantomjs http://localhost:$npm_package_config_port/tests/browser/runner.html",
     "browser-test-cover": "mocha-phantomjs -R node_modules/node-jscover/lib/reporters/mocha/console http://localhost:$npm_package_config_port/tests/browser/runner.html?coverage"
