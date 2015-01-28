@@ -1,6 +1,6 @@
 {
   "name": "gregorian-calendar",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "author": "yiminghe <yiminghe@gmail.com>",
   "engines": {
     "node": "~0.11"
@@ -8,7 +8,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "http://github.com/kissyteam/gregorian-calendar"
+    "url": "http://github.com/yiminghe/gregorian-calendar"
   },
   "devDependencies": {
     "aggregate-bower": "^1.0.2",
