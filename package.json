@@ -1,9 +1,15 @@
 {
   "name": "gregorian-calendar",
-  "version": "2.0.5",
+  "version": "3.0.0",
   "author": "yiminghe <yiminghe@gmail.com>",
+  "description": "date time utils like momentjs",
+  "keywords": [
+    "date",
+    "time",
+    "momentjs"
+  ],
   "engines": {
-    "node": "~0.11"
+    "node": ">=0.10"
   },
   "license": "MIT",
   "repository": {
@@ -11,40 +17,10 @@
     "url": "http://github.com/yiminghe/gregorian-calendar"
   },
   "devDependencies": {
-    "aggregate-bower": "^1.0.2",
-    "async": "^0.9.0",
-    "auto-deps": "^1.0.3",
     "expect.js": "^0.3.1",
-    "gulp": "^3.8.7",
-    "gulp-clean": "^0.3.1",
-    "gulp-filter": "^1.0.0",
-    "gulp-footer": "^1.0.5",
-    "gulp-header": "^1.0.5",
-    "gulp-jscs": "^1.1.0",
-    "gulp-jshint": "^1.8.4",
-    "gulp-kclean": "~0.0.15",
-    "gulp-modulex": "^1.0.0",
-    "gulp-rename": "^1.2.0",
-    "gulp-replace": "^0.4.0",
-    "gulp-uglify": "^0.3.1",
-    "gulp-util": "^3.0.0",
-    "gulp-wrapper": "^0.1.5",
-    "jshint": "^2.5.5",
-    "jshint-stylish": "^0.4.0",
-    "koa": "^0.11.0",
-    "koa-body": "^0.2.0",
-    "koa-modularize": "^3.0.3",
-    "koa-mount": "^1.3.0",
-    "koa-node-jscover": "^1.1.1",
-    "koa-serve-index": "^1.0.1",
-    "koa-static": "^1.4.7",
-    "mocha": "^1.21.4",
-    "modulex": "^1.7.4",
-    "node-jscover": "^0.6.8",
-    "node-jscover-coveralls": "^1.0.10",
-    "node-jscover-handler": "^1.0.3",
     "precommit-hook": "^1.0.7",
-    "through2": "^0.6.2"
+    "rc-server": "^2.0.4",
+    "rc-tools": "^1.2.6"
   },
   "precommit": [
     "lint"
@@ -53,14 +29,18 @@
     "port": 8011
   },
   "scripts": {
-    "start": "node --harmony server",
+    "history": "rc-tools run history",
+    "start": "node --harmony node_modules/.bin/rc-server",
+    "publish": "spm publish && rc-tools run tag",
+    "lint": "rc-tools run lint",
     "test": "",
-    "publish": "spm publish && gulp tag",
-    "lint": "gulp lint",
-    "browser-test": "mocha-phantomjs http://localhost:$npm_package_config_port/tests/browser/runner.html",
-    "browser-test-cover": "mocha-phantomjs -R node_modules/node-jscover/lib/reporters/mocha/console http://localhost:$npm_package_config_port/tests/browser/runner.html?coverage"
+    "saucelabs": "rc-tools run saucelabs",
+    "browser-test": "rc-tools run browser-test",
+    "browser-test-cover": "rc-tools run browser-test-cover"
   },
-  "spm":{
-    "output": ["lib/locale/*.js"]
+  "spm": {
+    "output": [
+      "lib/locale/*.js"
+    ]
   }
 }

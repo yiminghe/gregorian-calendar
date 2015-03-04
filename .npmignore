@@ -19,3 +19,6 @@ Thumbs.db
 .*proj
 .svn/
 *.swp
+_site/
+dist/
+spm_modules/

@@ -3,11 +3,12 @@
  * @author yiminghe@gmail.com
  */
 
-var GregorianCalendar = require('../../../');
+var GregorianCalendar = require('../../');
 var ONE_SECOND = 1000;
 var ONE_MINUTE = 60 * ONE_SECOND;
 var ONE_HOUR = 60 * ONE_MINUTE;
 var ONE_DAY = 24 * ONE_HOUR;
+var expect = require('expect.js');
 // var ONE_WEEK = 7 * ONE_DAY;
 
 describe('GregorianCalendar', function () {
@@ -15,7 +16,7 @@ describe('GregorianCalendar', function () {
         var gregorianCalendar;
 
         beforeEach(function () {
-            gregorianCalendar = new GregorianCalendar(require('../../../lib/locale/zh-cn'));
+            gregorianCalendar = new GregorianCalendar(require('../../lib/locale/zh-cn'));
           gregorianCalendar.set(2013,
             GregorianCalendar.JUNE, 8, 18, 0, 0, 0);
         });
