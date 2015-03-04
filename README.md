@@ -144,6 +144,10 @@ console.log(date.getDayOfWeek());
   DECEMBER: 11
 ```
 
+### GregorianCalendar.prototype.set(year, month, dayOfMonth, hourOfDay, minutes, seconds, milliseconds)
+
+same as call setYear, setMonth, setDayOfMonth ....
+
 ### GregorianCalendar.prototype.setTime(time: Number)
 
 set absolute time for current instance
@@ -192,27 +196,27 @@ set the hour of day for the given calendar field.
 
 Returns the hour of day for the given calendar field.
 
-### GregorianCalendar.prototype.setMinute(minute: Number)
+### GregorianCalendar.prototype.setMinutes(minute: Number)
 
 set the minute of the given calendar field.
 
-### Number GregorianCalendar.prototype.getMinute()
+### Number GregorianCalendar.prototype.getMinutes()
 
 Returns the minute of the given calendar field.
 
-### GregorianCalendar.prototype.setSecond(second: Number)
+### GregorianCalendar.prototype.setSeconds(second: Number)
 
 set the second of the given calendar field.
 
-### Number GregorianCalendar.prototype.getSecond()
+### Number GregorianCalendar.prototype.getSeconds()
 
 Returns the second of the given calendar field.
 
-### GregorianCalendar.prototype.setMilliSecond(second: Number)
+### GregorianCalendar.prototype.setMilliSeconds(second: Number)
 
 set the millisecond of the given calendar field.
 
-### Number GregorianCalendar.prototype.getMilliSecond()
+### Number GregorianCalendar.prototype.getMilliSeconds()
 
 Returns the millisecond of the given calendar field.
 
