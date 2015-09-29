@@ -1,9 +1,8 @@
 # gregorian-calendar
 
-gregorian calendar lib on browser and nodejs
+gregorian calendar lib for browser and nodejs. ported from JAVA.
 
 [![date](https://nodei.co/npm/gregorian-calendar.png)](https://npmjs.org/package/gregorian-calendar)
-[![SPM version](http://spmjs.io/badge/gregorian-calendar)](http://spmjs.io/package/gregorian-calendar)
 [![NPM downloads](http://img.shields.io/npm/dm/gregorian-calendar.svg)](https://npmjs.org/package/gregorian-calendar)
 [![Build Status](https://secure.travis-ci.org/yiminghe/gregorian-calendar.png?branch=master)](https://travis-ci.org/yiminghe/gregorian-calendar)
 [![Coverage Status](https://img.shields.io/coveralls/yiminghe/gregorian-calendar.svg)](https://coveralls.io/r/yiminghe/gregorian-calendar?branch=master)
@@ -175,6 +174,15 @@ Returns the year of the given calendar field.
 ### GregorianCalendar.prototype.setMonth(month: Number)
 
 set the month of the given calendar field. January is 0, you can use enum
+
+### GregorianCalendar.prototype.rollSetMonth(month: Number)
+
+set the month of the given calendar field without influence month.
+
+```js
+2015-09-29 -> setMonth(2) -> 2015-03-01
+2015-09-29 -> rollSetMonth(2) -> 2015-02-28
+```
 
 ### Number GregorianCalendar.prototype.getMonth()
 
