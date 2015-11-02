@@ -720,7 +720,7 @@ GregorianCalendar.prototype = {
         this.fields[YEAR + i] = arguments[i];
       }
     } else {
-      throw  new Error('illegal arguments for GregorianCalendar set');
+      throw new Error('illegal arguments for GregorianCalendar set');
     }
     this.time = undefined;
   },
