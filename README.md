@@ -17,7 +17,7 @@ gregorian calendar lib for browser and nodejs. ported from JAVA.
 
 ```javascript
 var GregorianCalendar = require('gregorian-calendar');
-var date = new GregorianCalendar(require('gregorian-calendar/lib/locale/zh-cn')); // defaults to en-us
+var date = new GregorianCalendar(require('gregorian-calendar/lib/locale/zh_CN')); // defaults to en_US
 date.setTime(+new Date());
 console.log(date.getDayOfWeek());
 ```
@@ -26,7 +26,8 @@ console.log(date.getDayOfWeek());
 
 ### Constructor GregorianCalendar(locale)
 
-* locale: specify suc as timeZoneOffset, firstDayOfWeek, can be require('gregorian-calendar/lib/locale/zh-cn') or require('gregorian-calendar/lib/locale/en-us')
+* locale: specify suc as timeZoneOffset, firstDayOfWeek, can be require('gregorian-calendar/lib/locale/zh_CN') or 
+require('gregorian-calendar/lib/locale/en_US')
 
 
 ### Enums
