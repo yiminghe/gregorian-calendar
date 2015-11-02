@@ -23,3 +23,4 @@ out/
 _site/
 dist/
 spm_modules/
+lib/
