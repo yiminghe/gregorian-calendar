@@ -16,7 +16,7 @@ describe('GregorianCalendar', function () {
     var gregorianCalendar;
 
     beforeEach(function () {
-      gregorianCalendar = new GregorianCalendar(require('../../src/locale/zh-cn'));
+      gregorianCalendar = new GregorianCalendar(require('../../src/locale/zh_CN'));
       gregorianCalendar.set(2013,
         GregorianCalendar.JUNE, 8, 18, 0, 0, 0);
     });

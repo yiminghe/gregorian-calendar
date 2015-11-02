@@ -5,7 +5,7 @@
  */
 const toInt = parseInt;
 const Utils = require('./utils');
-const defaultLocale = require('./locale/en-us');
+const defaultLocale = require('./locale/en_US');
 const Const = require('./const');
 
 /*
