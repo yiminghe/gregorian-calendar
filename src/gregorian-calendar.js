@@ -32,7 +32,7 @@ function GregorianCalendar(loc) {
    * @protected
    * @type Number|undefined
    */
-  this.time = Date.now();
+  this.time = undefined;
   /*
    * The timezoneOffset in minutes used by this date.
    * @type Number
@@ -467,13 +467,13 @@ GregorianCalendar.prototype = {
    * @protected
    */
   computeTime() {
-    if (!this.isSet(YEAR)) {
-      throw new Error('year must be set for GregorianCalendar');
-    }
-
+    let year;
     const fields = this.fields;
-
-    const year = fields[YEAR];
+    if (this.isSet(YEAR)) {
+      year = fields[YEAR];
+    } else {
+      year = new Date().getFullYear();
+    }
     let timeOfDay = 0;
     if (this.isSet(HOUR_OF_DAY)) {
       timeOfDay += fields[HOUR_OF_DAY];
@@ -484,20 +484,13 @@ GregorianCalendar.prototype = {
     timeOfDay += fields[SECONDS] || 0;
     timeOfDay *= 1000;
     timeOfDay += fields[MILLISECONDS] || 0;
-
     let fixedDate = 0;
-
     fields[YEAR] = year;
-
     fixedDate = fixedDate + this.getFixedDate();
-
     // millis represents local wall-clock time in milliseconds.
     let millis = (fixedDate - EPOCH_OFFSET) * ONE_DAY + timeOfDay;
-
     millis -= this.timezoneOffset * ONE_MINUTE;
-
     this.time = millis;
-
     this.computeFields();
   },
 
@@ -585,7 +578,7 @@ GregorianCalendar.prototype = {
       // We are on the first day of the year.
       if (self.isSet(DAY_OF_YEAR)) {
         fixedDate += fields[DAY_OF_YEAR] - 1;
-      } else {
+      } else if (self.isSet(WEEK_OF_YEAR)) {
         firstDayOfWeek = getDayOfWeekDateOnOrBefore(fixedDate + 6, firstDayOfWeekCfg);
         // If we have enough days in the first week, then move
         // to the previous week.

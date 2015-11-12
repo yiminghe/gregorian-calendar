@@ -21,10 +21,6 @@ describe('GregorianCalendar', function () {
         GregorianCalendar.JUNE, 8, 18, 0, 0, 0);
     });
 
-    it('default to now', function () {
-      expect(new GregorianCalendar().getYear()).to.be(new Date().getFullYear());
-    });
-
     it('time works', function () {
       expect(gregorianCalendar.getYear()).to.be(2013);
       expect(gregorianCalendar.getMonth()).to.be(5);
