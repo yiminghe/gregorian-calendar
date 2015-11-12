@@ -32,7 +32,7 @@ function GregorianCalendar(loc) {
    * @protected
    * @type Number|undefined
    */
-  this.time = undefined;
+  this.time = Date.now();
   /*
    * The timezoneOffset in minutes used by this date.
    * @type Number
