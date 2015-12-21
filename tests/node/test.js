@@ -1,4 +1,8 @@
-var GregorianCalendar = require('../../');
-var date = new GregorianCalendar(require('../../src/locale/zh_CN'));
+/* eslint no-console:0, strict:0 */
+
+'use strict';
+
+const GregorianCalendar = require('../../lib/gregorian-calendar');
+const date = new GregorianCalendar(require('../../lib/locale/zh_CN'));
 date.setTime(+new Date());
 console.log(date.getDayOfWeek());

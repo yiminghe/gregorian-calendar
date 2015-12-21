@@ -302,6 +302,10 @@ Returns a clone of current instance
 ### boolean GregorianCalendar.prototype.equals(other: GregorianCalendar)
 
 
+### Number GregorianCalendar.prototype.compareToDay(other: GregorianCalendar)
+
+compare this object and other by day. return -1 0 or 1
+
 ### GregorianCalendar.prototype.clear()
 
 clear all field of current instance

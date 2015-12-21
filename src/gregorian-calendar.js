@@ -1283,6 +1283,22 @@ GregorianCalendar.prototype = {
       this.minimalDaysInFirstWeek === obj.minimalDaysInFirstWeek;
   },
 
+  compareToDay(d2) {
+    const d1Year = this.getYear();
+    const d2Year = d2.getYear();
+    const d1Month = this.getMonth();
+    const d2Month = d2.getMonth();
+    const d1Day = this.getDayOfMonth();
+    const d2Day = d2.getDayOfMonth();
+    if (d1Year !== d2Year) {
+      return d1Year - d2Year;
+    }
+    if (d1Month !== d2Month) {
+      return d1Month - d2Month;
+    }
+    return d1Day - d2Day;
+  },
+
   /*
    * Sets all the calendar field values or specified field and the time value
    * (millisecond offset from the Epoch) of this Calendar undefined.
