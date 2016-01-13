@@ -1315,6 +1315,13 @@ GregorianCalendar.prototype = {
     this.time = undefined;
     this.fieldsComputed = false;
   },
+
+  toString() {
+    // for debug
+    const v = this;
+    return '[GregorianCalendar]: ' + v.getYear() + '/' + v.getMonth() + '/' + v.getDayOfMonth() +
+      ' ' + v.getHourOfDay() + ':' + v.getMinutes() + ':' + v.getSeconds();
+  },
 };
 
 const GregorianCalendarProto = GregorianCalendar.prototype;

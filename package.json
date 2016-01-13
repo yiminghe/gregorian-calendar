@@ -1,6 +1,6 @@
 {
   "name": "gregorian-calendar",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "author": "yiminghe <yiminghe@gmail.com>",
   "description": "date time utils ported from java",
   "keywords": [
