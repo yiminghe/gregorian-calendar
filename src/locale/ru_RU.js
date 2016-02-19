@@ -4,8 +4,8 @@
  * @author plandem@gmail.com
  */
 module.exports = {
-	// in minutes
-	timezoneOffset: 3 * 60,
-	firstDayOfWeek: 1,
-	minimalDaysInFirstWeek: 1,
+  // in minutes
+  timezoneOffset: 3 * 60,
+  firstDayOfWeek: 1,
+  minimalDaysInFirstWeek: 1,
 };
