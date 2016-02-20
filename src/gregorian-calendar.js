@@ -327,36 +327,36 @@ GregorianCalendar.prototype = {
     let value;
     const fields = this.fields;
     switch (field) {
-    case DAY_OF_MONTH:
-      value = getMonthLength(fields[YEAR], fields[MONTH]);
-      break;
+      case DAY_OF_MONTH:
+        value = getMonthLength(fields[YEAR], fields[MONTH]);
+        break;
 
-    case WEEK_OF_YEAR:
-      const endOfYear = this.clone();
-      endOfYear.clear();
-      endOfYear.set(fields[YEAR], GregorianCalendar.DECEMBER, 31);
-      value = endOfYear.get(WEEK_OF_YEAR);
-      if (value === 1) {
-        value = 52;
-      }
-      break;
+      case WEEK_OF_YEAR:
+        const endOfYear = this.clone();
+        endOfYear.clear();
+        endOfYear.set(fields[YEAR], GregorianCalendar.DECEMBER, 31);
+        value = endOfYear.get(WEEK_OF_YEAR);
+        if (value === 1) {
+          value = 52;
+        }
+        break;
 
-    case WEEK_OF_MONTH:
-      const endOfMonth = this.clone();
-      endOfMonth.clear();
-      endOfMonth.set(fields[YEAR], fields[MONTH], getMonthLength(fields[YEAR], fields[MONTH]));
-      value = endOfMonth.get(WEEK_OF_MONTH);
-      break;
+      case WEEK_OF_MONTH:
+        const endOfMonth = this.clone();
+        endOfMonth.clear();
+        endOfMonth.set(fields[YEAR], fields[MONTH], getMonthLength(fields[YEAR], fields[MONTH]));
+        value = endOfMonth.get(WEEK_OF_MONTH);
+        break;
 
-    case DAY_OF_YEAR:
-      value = getYearLength(fields[YEAR]);
-      break;
+      case DAY_OF_YEAR:
+        value = getYearLength(fields[YEAR]);
+        break;
 
-    case DAY_OF_WEEK_IN_MONTH:
-      value = toInt((getMonthLength(fields[YEAR], fields[MONTH]) - 1) / 7) + 1;
-      break;
-    default :
-      break;
+      case DAY_OF_WEEK_IN_MONTH:
+        value = toInt((getMonthLength(fields[YEAR], fields[MONTH]) - 1) / 7) + 1;
+        break;
+      default :
+        break;
     }
     if (value === undefined) {
       throw new Error('maximum value not defined!');
@@ -837,29 +837,29 @@ GregorianCalendar.prototype = {
       adjustDayOfMonth(self);
     } else {
       switch (field) {
-      case HOUR_OF_DAY:
-        amount *= ONE_HOUR;
-        break;
-      case MINUTE:
-        amount *= ONE_MINUTE;
-        break;
-      case SECONDS:
-        amount *= ONE_SECOND;
-        break;
-      case MILLISECONDS:
-        break;
-      case WEEK_OF_MONTH:
-      case WEEK_OF_YEAR:
-      case DAY_OF_WEEK_IN_MONTH:
-        amount *= ONE_WEEK;
-        break;
-      case DAY_OF_WEEK:
-      case DAY_OF_YEAR:
-      case DAY_OF_MONTH:
-        amount *= ONE_DAY;
-        break;
-      default:
-        throw new Error('illegal field for add');
+        case HOUR_OF_DAY:
+          amount *= ONE_HOUR;
+          break;
+        case MINUTE:
+          amount *= ONE_MINUTE;
+          break;
+        case SECONDS:
+          amount *= ONE_SECOND;
+          break;
+        case MILLISECONDS:
+          break;
+        case WEEK_OF_MONTH:
+        case WEEK_OF_YEAR:
+        case DAY_OF_WEEK_IN_MONTH:
+          amount *= ONE_WEEK;
+          break;
+        case DAY_OF_WEEK:
+        case DAY_OF_YEAR:
+        case DAY_OF_MONTH:
+          amount *= ONE_DAY;
+          break;
+        default:
+          throw new Error('illegal field for add');
       }
       self.setTime(self.time + amount);
     }
@@ -985,13 +985,13 @@ GregorianCalendar.prototype = {
 
     // consider compute time priority
     switch (field) {
-    case MONTH:
-      adjustDayOfMonth(self);
-      break;
-    default:
-      // other fields are set already when get
-      self.updateFieldsBySet(field);
-      break;
+      case MONTH:
+        adjustDayOfMonth(self);
+        break;
+      default:
+        // other fields are set already when get
+        self.updateFieldsBySet(field);
+        break;
     }
   },
 
@@ -1004,13 +1004,13 @@ GregorianCalendar.prototype = {
   rollSet(field, v) {
     this.set(field, v);
     switch (field) {
-    case MONTH:
-      adjustDayOfMonth(this);
-      break;
-    default:
-      // other fields are set already when get
-      this.updateFieldsBySet(field);
-      break;
+      case MONTH:
+        adjustDayOfMonth(this);
+        break;
+      default:
+        // other fields are set already when get
+        this.updateFieldsBySet(field);
+        break;
     }
   },
 
@@ -1088,21 +1088,21 @@ GregorianCalendar.prototype = {
   updateFieldsBySet(field) {
     const fields = this.fields;
     switch (field) {
-    case WEEK_OF_MONTH:
-      fields[DAY_OF_MONTH] = undefined;
-      break;
-    case DAY_OF_YEAR:
-      fields[MONTH] = undefined;
-      break;
-    case DAY_OF_WEEK:
-      fields[DAY_OF_MONTH] = undefined;
-      break;
-    case WEEK_OF_YEAR:
-      fields[DAY_OF_YEAR] = undefined;
-      fields[MONTH] = undefined;
-      break;
-    default:
-      break;
+      case WEEK_OF_MONTH:
+        fields[DAY_OF_MONTH] = undefined;
+        break;
+      case DAY_OF_YEAR:
+        fields[MONTH] = undefined;
+        break;
+      case DAY_OF_WEEK:
+        fields[DAY_OF_MONTH] = undefined;
+        break;
+      case WEEK_OF_YEAR:
+        fields[DAY_OF_YEAR] = undefined;
+        fields[MONTH] = undefined;
+        break;
+      default:
+        break;
     }
   },
 
