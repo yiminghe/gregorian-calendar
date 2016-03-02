@@ -309,3 +309,8 @@ compare this object and other by day. return -1 0 or 1
 ### GregorianCalendar.prototype.clear()
 
 clear all field of current instance
+
+
+## License
+
+gregorian-calendar is released under the MIT license.
