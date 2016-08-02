@@ -1,7 +1,7 @@
 /*
  * ko-kr locale
  * @ignore
- * @author yo@yevgnenll.me 
+ * @author yo@yevgnenll.me
  */
 module.exports = {
   // in minutes
